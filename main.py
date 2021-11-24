@@ -6,14 +6,18 @@ root = tk.Tk()
 
 
 def crearArchivo():
-    newWindow = tk.Toplevel()
+    newWindow = tk.Toplevel(root)
+    newWindow.geometry('300x300')
     newWindow.title("Crear Archivo")
-    newWindow.geometry('400x400')
-    label = tk.Label(newWindow, text="Hi")
+
+    label = tk.Label(newWindow, text="Escriba la ruta donde se creara el archivo")
     entry = tk.Entry(newWindow)
-    label.pack()
+    label = tk.Label(newWindow, text="Crear")
+    kill = tk.Button(newWindow, text="Salir", command= lambda: newWindow.destroy())
+    label.pack(padx=10, pady=10)
     entry.pack()
-    newWindow.focus_set
+    kill.pack()
+    newWindow.focus_set()
 
 
 class Gui:
