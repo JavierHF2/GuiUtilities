@@ -6,6 +6,44 @@ import tkinter as tk
 root = tk.Tk()
 
 
+def cambiarpropietarioArchivo():
+    newWindow = tk.Toplevel(root)
+    newWindow.geometry("300x300")
+    newWindow.title("Cambiar propietario")
+
+    texto_propietario_archivo = tk.Label(
+        newWindow, text="¿Cual sera el nuevo propietario?"
+    )
+    ruta_propietario_archivo = tk.Entry(newWindow)
+    texto_ruta_origen = tk.Label(newWindow, text="¿Cual es la ruta del archivo?")
+    ruta_origen_archivo = tk.Entry(newWindow)
+    texto_grupo_archivo = tk.Label(newWindow, text="¿Cual seria el nuevo grupo?")
+    ruta_grupo_archivo = tk.Entry(newWindow)
+
+    cambiar_archivo_grupo_boton = tk.Button(
+        newWindow,
+        text="Cambiar grupo",
+        command=lambda: os.chown(
+            ruta_origen_archivo.get(),
+            ruta_propietario_archivo.get(),
+            ruta_grupo_archivo.get(),
+        ),
+    )
+
+    boton_cerrar_ventana = tk.Button(
+        newWindow, text="Salir", command=lambda: newWindow.destroy()
+    )
+
+    texto_propietario_archivo.pack()
+    ruta_propietario_archivo.pack()
+    texto_ruta_origen.pack()
+    ruta_origen_archivo.pack()
+    texto_grupo_archivo.pack()
+    ruta_grupo_archivo.pack()
+    cambiar_archivo_grupo_boton.pack()
+    boton_cerrar_ventana.pack()
+
+
 def concatenarArchivos():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
@@ -150,7 +188,7 @@ class Gui:
         ttk.Button(mainframe, text="7. Hacer archivo ejecutable").grid(
             column=0, row=7, sticky=(tk.N)
         )
-        ttk.Button(mainframe, text="8. Cambiar el propietario de un archivo").grid(
+        ttk.Button(mainframe, text="8. Cambiar el propietario de un archivo",command=cambiarpropietarioArchivo).grid(
             column=0, row=8, sticky=(tk.N)
         )
         ttk.Button(mainframe, text="9. Cambiar el archivo de un grupo").grid(
