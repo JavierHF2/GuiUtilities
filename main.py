@@ -1,14 +1,24 @@
-import shutil, os
+import shutil
+import os
 from tkinter import ttk
 import tkinter as tk
 
 root = tk.Tk()
 
 
+def concatenarArchivos():
+    newWindow = tk.Toplevel(root)
+    newWindow.geometry("300x300")
+    newWindow.title("Concatenar Archivos")
+    newWindow.iconbitmap("favicon_io/edit-3.ico")
+
+
 def mostrarArchivos():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Mostrar Archivos")
+    newWindow.iconbitmap("favicon_io/list.ico")
+
     boton_cerrar_ventana = tk.Button(
         newWindow, text="Salir", command=lambda: newWindow.destroy()
     )
@@ -16,18 +26,16 @@ def mostrarArchivos():
     lbox = tk.Listbox(newWindow)
     lbox.pack()
     boton_cerrar_ventana.pack()
-    
 
     for item in flist:
         lbox.insert(tk.END, item)
-    
-
 
 
 def editarArchivo():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Editar Archivo")
+    newWindow.iconbitmap("favicon_io/edit.ico")
 
     texto_ruta_archivo = tk.Label(newWindow, text="¿Qué archivo se le añadira texto?")
     ruta_origen_texto = tk.Entry(newWindow)
@@ -57,6 +65,8 @@ def copiarArchivo():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Copiar Archivo")
+    newWindow.iconbitmap("favicon_io/copy.ico")
+
     texto_ruta_origen = tk.Label(newWindow, text="Escriba la ruta de origen")
     ruta_origen_texto = tk.Entry(newWindow)
     texto_ruta_destino = tk.Label(newWindow, text="Escriba la ruta de destino")
@@ -85,6 +95,7 @@ def crearArchivo():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Crear Archivo")
+    newWindow.iconbitmap("favicon_io/edit.ico")
 
     texto_ruta_origen = tk.Label(
         newWindow, text="Escriba la ruta donde se creara el archivo"
@@ -109,6 +120,7 @@ def crearArchivo():
 class Gui:
     def __init__(self, root):
         root.title("Gestion de archivos")
+        root.iconbitmap("favicon_io/directory.ico")
 
         mainframe = ttk.Frame(root, padding="3 3 12 12")
         mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
@@ -136,25 +148,25 @@ class Gui:
             text="4. Comparar archivos en un directorio",
             command=mostrarArchivos,
         ).grid(column=0, row=4, sticky=(tk.N))
-        ttk.Label(mainframe, text="5. Concatenar 2 archivos").grid(
-            column=0, row=5, sticky=(tk.N)
-        )
-        ttk.Label(mainframe, text="6. Ocurrencias de palabras en un archivo").grid(
+        ttk.Button(
+            mainframe, text="5. Concatenar 2 archivos", command=concatenarArchivos
+        ).grid(column=0, row=5, sticky=(tk.N))
+        ttk.Button(mainframe, text="6. Ocurrencias de palabras en un archivo").grid(
             column=0, row=6, sticky=(tk.N)
         )
-        ttk.Label(mainframe, text="7. Hacer archivo ejecutable").grid(
+        ttk.Button(mainframe, text="7. Hacer archivo ejecutable").grid(
             column=0, row=7, sticky=(tk.N)
         )
-        ttk.Label(mainframe, text="8. Cambiar el propietario de un archivo").grid(
+        ttk.Button(mainframe, text="8. Cambiar el propietario de un archivo").grid(
             column=0, row=8, sticky=(tk.N)
         )
-        ttk.Label(mainframe, text="9. Cambiar el archivo de un grupo").grid(
+        ttk.Button(mainframe, text="9. Cambiar el archivo de un grupo").grid(
             column=0, row=9, sticky=(tk.N)
         )
-        ttk.Label(mainframe, text="10. Cambiar el nombre de un archivo").grid(
+        ttk.Button(mainframe, text="10. Cambiar el nombre de un archivo").grid(
             column=0, row=10, sticky=(tk.N)
         )
-        ttk.Label(mainframe, text="11. Encriptar y desencriptar un archivo").grid(
+        ttk.Button(mainframe, text="11. Encriptar y desencriptar un archivo").grid(
             column=0, row=11, sticky=(tk.N)
         )
         ttk.Button(mainframe, text="Salir", command=exit).grid(
