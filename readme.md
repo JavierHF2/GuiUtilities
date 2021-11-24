@@ -1,4 +1,8 @@
-# Lista de trabajo
+# GuiUtilities
+
+Pequeña suite de utileria con Tkinter, funciona en Linux y Windows.
+
+## Lista de trabajo
 
 - [x] Crear archivo
 - [x] Copiar archivo a otro dir
@@ -11,3 +15,12 @@
 - [x] Cambiar el archivo de un grupo (Linux)
 - [ ] Cambiar el nombre de un archivo
 - [ ] Encriptar y desencriptar un archivo( age, gpg)
+
+## Como compilar y dependencias
+
+Se requiere instalar python3-tk si no esta instalado.
+Para correr usar:
+
+```Bash
+python3 main.py
+```
