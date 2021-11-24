@@ -1,5 +1,6 @@
 import shutil
 import os
+import sys
 from tkinter import ttk
 import tkinter as tk
 
@@ -17,7 +18,6 @@ def mostrarArchivos():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Mostrar Archivos")
-    newWindow.iconbitmap("favicon_io/list.ico")
 
     boton_cerrar_ventana = tk.Button(
         newWindow, text="Salir", command=lambda: newWindow.destroy()
@@ -35,7 +35,6 @@ def editarArchivo():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Editar Archivo")
-    newWindow.iconbitmap("favicon_io/edit.ico")
 
     texto_ruta_archivo = tk.Label(newWindow, text="¿Qué archivo se le añadira texto?")
     ruta_origen_texto = tk.Entry(newWindow)
@@ -65,7 +64,6 @@ def copiarArchivo():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Copiar Archivo")
-    newWindow.iconbitmap("favicon_io/copy.ico")
 
     texto_ruta_origen = tk.Label(newWindow, text="Escriba la ruta de origen")
     ruta_origen_texto = tk.Entry(newWindow)
@@ -95,7 +93,6 @@ def crearArchivo():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Crear Archivo")
-    newWindow.iconbitmap("favicon_io/edit.ico")
 
     texto_ruta_origen = tk.Label(
         newWindow, text="Escriba la ruta donde se creara el archivo"
@@ -120,8 +117,10 @@ def crearArchivo():
 class Gui:
     def __init__(self, root):
         root.title("Gestion de archivos")
-        root.iconbitmap("favicon_io/directory.ico")
-
+        if sys.platform.startswith("windows"):
+            root.iconbitmap("favicon_io/directory.ico")
+        elif sys.platform.startswith("linux"):
+            root.iconbitmap("./favicon_io/directory.ico")
         mainframe = ttk.Frame(root, padding="3 3 12 12")
         mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
 
