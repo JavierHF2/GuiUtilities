@@ -24,9 +24,9 @@ def cambiarpropietarioArchivo():
         newWindow,
         text="Cambiar grupo",
         command=lambda: os.chown(
-            ruta_origen_archivo.get(),
+            int(ruta_origen_archivo.get()),
             ruta_propietario_archivo.get(),
-            ruta_grupo_archivo.get(),
+            int(ruta_grupo_archivo.get()),
         ),
     )
 
