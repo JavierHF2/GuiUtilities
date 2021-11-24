@@ -1,8 +1,42 @@
-import sys
+import shutil
 from tkinter import ttk
 import tkinter as tk
 
 root = tk.Tk()
+
+
+def mostrarArchivos():
+    newWindow = tk.Toplevel(root)
+    newWindow.geometry('300x300')
+    newWindow.title("Mostrar Archivos")
+
+def editarArchivo():
+    newWindow = tk.Toplevel(root)
+    newWindow.geometry('300x300')
+    newWindow.title("Editar Archivo")
+
+
+def copiarArchivo():
+    newWindow = tk.Toplevel(root)
+    newWindow.geometry('300x300')
+    newWindow.title("Copiar Archivo")
+    texto_ruta_origen = tk.Label(
+        newWindow, text="Escriba la ruta de origen")
+    ruta_origen_texto = tk.Entry(newWindow)
+    texto_ruta_destino = tk.Label(newWindow, text="Escriba la ruta de destino")
+    ruta_destino_texto = tk.Entry(newWindow)
+    copiar_archivo_boton = tk.Button(
+        newWindow, text="Copiar Archivo", command=lambda: shutil.copyfile(ruta_origen_texto.get(), ruta_destino_texto.get()))
+    boton_cerrar_ventana = tk.Button(
+        newWindow, text="Salir", command=lambda: newWindow.destroy())
+
+    texto_ruta_origen.pack()
+    ruta_origen_texto.pack()
+    texto_ruta_destino.pack()
+    ruta_destino_texto.pack()
+    copiar_archivo_boton.pack()
+    boton_cerrar_ventana.pack()
+    newWindow.focus_set()
 
 
 def crearArchivo():
@@ -13,7 +47,6 @@ def crearArchivo():
     texto_principal = tk.Label(
         newWindow, text="Escriba la ruta donde se creara el archivo")
     ruta_entrada_texto = tk.Entry(newWindow)
-    ruta_entrada_texto.get()
     crear_archivo_boton = tk.Button(
         newWindow, text="Crear archivo", command=lambda: open(ruta_entrada_texto.get(), 'x'))
     boton_cerrar_ventana = tk.Button(
@@ -39,11 +72,11 @@ class Gui:
             column=0, row=0, sticky=(tk.N))
         ttk.Button(mainframe, text="1. Crear un archivo en el directorio actual", command=crearArchivo).grid(
             column=0, row=1, sticky=(tk.N))
-        ttk.Label(mainframe, text="2. Copiar archivo a otro directorio").grid(
+        ttk.Button(mainframe, text="2. Copiar archivo a otro directorio", command=copiarArchivo).grid(
             column=0, row=2, sticky=(tk.N))
-        ttk.Label(mainframe, text="3. Añadir texto a un archivo (simple edición)").grid(
+        ttk.Button(mainframe, text="3. Añadir texto a un archivo (simple edición)", command=editarArchivo).grid(
             column=0, row=3, sticky=(tk.N))
-        ttk.Label(mainframe, text="4. Comparar archivos en un directorio").grid(
+        ttk.Button(mainframe, text="4. Comparar archivos en un directorio", command=mostrarArchivos).grid(
             column=0, row=4, sticky=(tk.N))
         ttk.Label(mainframe, text="5. Concatenar 2 archivos").grid(
             column=0, row=5, sticky=(tk.N))
