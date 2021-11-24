@@ -1,6 +1,5 @@
 import shutil
 import os
-import sys
 from tkinter import ttk
 import tkinter as tk
 
@@ -117,10 +116,6 @@ def crearArchivo():
 class Gui:
     def __init__(self, root):
         root.title("Gestion de archivos")
-        if sys.platform.startswith("windows"):
-            root.iconbitmap("favicon_io/directory.ico")
-        elif sys.platform.startswith("linux"):
-            root.iconbitmap("./favicon_io/directory.ico")
         mainframe = ttk.Frame(root, padding="3 3 12 12")
         mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
 
