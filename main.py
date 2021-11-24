@@ -10,13 +10,19 @@ def crearArchivo():
     newWindow.geometry('300x300')
     newWindow.title("Crear Archivo")
 
-    label = tk.Label(newWindow, text="Escriba la ruta donde se creara el archivo")
-    entry = tk.Entry(newWindow)
-    label = tk.Label(newWindow, text="Crear")
-    kill = tk.Button(newWindow, text="Salir", command= lambda: newWindow.destroy())
-    label.pack(padx=10, pady=10)
-    entry.pack()
-    kill.pack()
+    texto_principal = tk.Label(
+        newWindow, text="Escriba la ruta donde se creara el archivo")
+    ruta_entrada_texto = tk.Entry(newWindow)
+    ruta_entrada_texto.get()
+    crear_archivo_boton = tk.Button(
+        newWindow, text="Crear archivo", command=lambda: open(ruta_entrada_texto.get(), 'x'))
+    boton_cerrar_ventana = tk.Button(
+        newWindow, text="Salir", command=lambda: newWindow.destroy())
+
+    texto_principal.pack()
+    ruta_entrada_texto.pack()
+    crear_archivo_boton.pack()
+    boton_cerrar_ventana.pack()
     newWindow.focus_set()
 
 
