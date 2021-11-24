@@ -10,7 +10,6 @@ def concatenarArchivos():
     newWindow = tk.Toplevel(root)
     newWindow.geometry("300x300")
     newWindow.title("Concatenar Archivos")
-    newWindow.iconbitmap("favicon_io/edit-3.ico")
 
 
 def mostrarArchivos():
