@@ -1,8 +1,8 @@
 # Lista de trabajo
 
-- [x] Crear arch DONE
-- [x] Copiar arch a otro dir
-- [ ] Editar con un editor (simple edicion)
+- [x] Crear archivo
+- [x] Copiar archivo a otro dir
+- [x] Editar con un editor (simple edicion)
 - [ ] Comparar archivos en un directorio -(ls?)
 - [ ] Concatenar 2 archivos
 - [ ] "Cuenta el numero de ocurrencias de las letras 'B' o 'b'dentro de un archivo del directorio d2"
