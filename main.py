@@ -60,7 +60,7 @@ def mostrarArchivos():
     boton_grande = tk.Button(
         newWindow,
         text="Buscar el mas grande",
-        command=lambda: os.system("ls {1}-ogh".format(texto_origen_directorio.get())),
+        command=lambda: os.system("ls {1} -ogh".format(texto_origen_directorio.get())),
     )
 
     boton_cerrar_ventana = tk.Button(
