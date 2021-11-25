@@ -1,6 +1,6 @@
 # GuiUtilities
 
-Pequeña suite de utileria con Tkinter, funciona en Linux y Windows.
+Pequeña suite de utileria con Tkinter enfocada en sistemas Linux.
 
 ## Lista de trabajo
 

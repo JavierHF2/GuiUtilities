@@ -130,21 +130,27 @@ def crearArchivo():
     newWindow.geometry("300x300")
     newWindow.title("Crear Archivo")
 
-    texto_ruta_origen = tk.Label(
-        newWindow, text="Escriba la ruta donde se creara el archivo"
-    )
+    texto_nombre_origen = tk.Label(newWindow, text="Escriba el nombre del archivo")
     ruta_entrada_texto = tk.Entry(newWindow)
+    texto_ruta_origen = tk.Label(newWindow, text="Escriba su ruta de creación")
+    ruta_archivo_texto = tk.Entry(newWindow)
     crear_archivo_boton = tk.Button(
         newWindow,
         text="Crear archivo",
-        command=lambda: open(ruta_entrada_texto.get(), "x"),
+        command=lambda: os.system(
+            "touch {0} && mkdir {1} && mv {0} {1} ".format(
+                ruta_entrada_texto.get(), ruta_archivo_texto.get()
+            )
+        ),
     )
     boton_cerrar_ventana = tk.Button(
         newWindow, text="Salir", command=lambda: newWindow.destroy()
     )
 
-    texto_ruta_origen.pack()
+    texto_nombre_origen.pack()
     ruta_entrada_texto.pack()
+    texto_ruta_origen.pack()
+    ruta_archivo_texto.pack()
     crear_archivo_boton.pack()
     boton_cerrar_ventana.pack()
     newWindow.focus_set()
@@ -163,7 +169,7 @@ class Gui:
         )
         ttk.Button(
             mainframe,
-            text="1. Crear un archivo en el directorio actual",
+            text="1. Crear un archivo",
             command=crearArchivo,
         ).grid(column=0, row=1, sticky=(tk.N))
         ttk.Button(
@@ -188,9 +194,11 @@ class Gui:
         ttk.Button(mainframe, text="7. Hacer archivo ejecutable").grid(
             column=0, row=7, sticky=(tk.N)
         )
-        ttk.Button(mainframe, text="8. Cambiar el propietario de un archivo",command=cambiarpropietarioArchivo).grid(
-            column=0, row=8, sticky=(tk.N)
-        )
+        ttk.Button(
+            mainframe,
+            text="8. Cambiar el propietario de un archivo",
+            command=cambiarpropietarioArchivo,
+        ).grid(column=0, row=8, sticky=(tk.N))
         ttk.Button(mainframe, text="9. Cambiar el archivo de un grupo").grid(
             column=0, row=9, sticky=(tk.N)
         )
@@ -205,6 +213,6 @@ class Gui:
         )
 
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     Gui(root)
     root.mainloop()
