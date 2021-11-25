@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-# texto
+# texto hola que tal
 import os
 from tkinter import ttk
 import tkinter as tk
