@@ -45,6 +45,33 @@ def concatenarArchivos():
     newWindow.geometry("300x300")
     newWindow.title("Concatenar Archivos")
 
+    texto_origen = tk.Label(newWindow, text="¿Cual es el primer archivo a contatenar?")
+    primer_archivo_contatenar = tk.Entry(newWindow)
+    texto_destino = tk.Label(
+        newWindow, text="¿Cual sera el segundo archivo a contatenar?"
+    )
+    segundo_archivo_contatenar = tk.Entry(newWindow)
+    contatenar_boton = tk.Button(
+        newWindow,
+        text="Contatenar el 1ero al 2ndo",
+        command=lambda: os.system(
+            "cat {0} >> {1}".format(
+                primer_archivo_contatenar.get(), segundo_archivo_contatenar.get()
+            )
+        ),
+    )
+
+    boton_cerrar_ventana = tk.Button(
+        newWindow, text="Salir", command=lambda: newWindow.destroy()
+    )
+
+    texto_destino.pack()
+    primer_archivo_contatenar.pack()
+    texto_destino.pack()
+    segundo_archivo_contatenar.pack()
+    contatenar_boton.pack()
+    boton_cerrar_ventana.pack()
+
 
 def mostrarArchivos():
     newWindow = tk.Toplevel(root)
@@ -55,13 +82,14 @@ def mostrarArchivos():
     texto_origen_directorio = tk.Entry(newWindow)
     boton_grande = tk.Button(
         newWindow,
-        text="Buscar el mas grande",
-        command=lambda: os.system("ls {0} -ogh".format(texto_origen_directorio.get())),
+        text="Listar archivos comenzado por el más joven",
+        command=lambda: os.system("ls {0} -ltrg".format(texto_origen_directorio.get())),
     )
 
     boton_cerrar_ventana = tk.Button(
         newWindow, text="Salir", command=lambda: newWindow.destroy()
     )
+    
     texto_origen.pack()
     texto_origen_directorio.pack()
     boton_grande.pack()

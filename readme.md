@@ -8,7 +8,7 @@ Pequeña suite de utileria con Tkinter enfocada en sistemas Linux.
 - [x] Copiar archivo a otro dir
 - [x] Editar con un editor (simple edicion)
 - [x] Comparar archivos en un directorio
-- [ ] Concatenar 2 archivos
+- [x] Concatenar 2 archivos
 - [ ] "Cuenta el numero de ocurrencias de las letras 'B' o 'b'dentro de un archivo del directorio d2"
 - [ ] Cambia permisos del archivo a solamente ejecucion (Linux)
 - [x] Cambiar el propietario de un archvio (Linux)
