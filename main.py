@@ -55,7 +55,7 @@ def mostrarArchivos():
     newWindow.geometry("300x300")
     newWindow.title("Mostrar Archivos")
 
-    texto_origen = "Que carpeta analizar?"
+    texto_origen = tk.Label(newWindow, text="Que carpeta analizar?")
     texto_origen_directorio = tk.Entry(newWindow)
     boton_grande = tk.Button(
         newWindow,
@@ -119,16 +119,12 @@ def copiarArchivo():
     copiar_archivo_boton = tk.Button(
         newWindow,
         text="Copiar Archivo",
-        command=lambda: shutil.copyfile(
-            ruta_origen_texto.get(), ruta_destino_texto.get()
-        ),
-    )
-    boton_cerrar_ventana = tk.Button(
-        newWindow,
-        text="Salir",
         command=lambda: os.system(
             "cp {0} {1}".format(ruta_origen_texto.get(), ruta_destino_texto.get())
         ),
+    )
+    boton_cerrar_ventana = tk.Button(
+        newWindow, text="Salir", command=lambda: newWindow.destroy()
     )
 
     texto_ruta_origen.pack()
@@ -153,7 +149,7 @@ def crearArchivo():
         newWindow,
         text="Crear archivo",
         command=lambda: os.system(
-            "touch {0} && mkdir {1} && mv {0} {1} ".format(
+            "touch {0} && mkdir -p {1} && mv {0} {1} ".format(
                 ruta_entrada_texto.get(), ruta_archivo_texto.get()
             )
         ),
