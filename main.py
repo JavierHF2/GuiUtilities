@@ -64,9 +64,10 @@ def concatenarArchivos():
     boton_cerrar_ventana = tk.Button(
         newWindow, text="Salir", command=lambda: newWindow.destroy()
     )
-
-    texto_destino.pack()
+    
+    texto_origen.pack()
     primer_archivo_contatenar.pack()
+    texto_destino.pack()
     texto_destino.pack()
     segundo_archivo_contatenar.pack()
     contatenar_boton.pack()
@@ -89,7 +90,7 @@ def mostrarArchivos():
     boton_cerrar_ventana = tk.Button(
         newWindow, text="Salir", command=lambda: newWindow.destroy()
     )
-    
+
     texto_origen.pack()
     texto_origen_directorio.pack()
     boton_grande.pack()
