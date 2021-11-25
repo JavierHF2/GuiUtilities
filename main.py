@@ -55,16 +55,21 @@ def mostrarArchivos():
     newWindow.geometry("300x300")
     newWindow.title("Mostrar Archivos")
 
+    texto_origen = "Que carpeta analizar?"
+    texto_origen_directorio = tk.Entry(newWindow)
+    boton_grande = tk.Button(
+        newWindow,
+        text="Buscar el mas grande",
+        command=lambda: os.system("ls {1}-ogh".format(texto_origen_directorio.get())),
+    )
+
     boton_cerrar_ventana = tk.Button(
         newWindow, text="Salir", command=lambda: newWindow.destroy()
     )
-    flist = os.listdir()
-    lbox = tk.Listbox(newWindow)
-    lbox.pack()
+    texto_origen.pack()
+    texto_origen_directorio.pack()
+    boton_grande.pack()
     boton_cerrar_ventana.pack()
-
-    for item in flist:
-        lbox.insert(tk.END, item)
 
 
 def editarArchivo():
@@ -79,8 +84,10 @@ def editarArchivo():
     editar_archivo_boton = tk.Button(
         newWindow,
         text="Editar",
-        command=lambda: open(ruta_origen_texto.get(), "a").write(
-            apender_texto_origen.get()
+        command=lambda: os.system(
+            'echo "{0}" >> {1} '.format(
+                texto_apender_texto_origen.get(), ruta_origen_texto.get()
+            )
         ),
     )
     boton_cerrar_ventana = tk.Button(
@@ -101,9 +108,13 @@ def copiarArchivo():
     newWindow.geometry("300x300")
     newWindow.title("Copiar Archivo")
 
-    texto_ruta_origen = tk.Label(newWindow, text="Escriba la ruta de origen")
+    texto_ruta_origen = tk.Label(
+        newWindow, text="Escriba la ruta de origen del archivo"
+    )
     ruta_origen_texto = tk.Entry(newWindow)
-    texto_ruta_destino = tk.Label(newWindow, text="Escriba la ruta de destino")
+    texto_ruta_destino = tk.Label(
+        newWindow, text="Escriba la ruta de destino del archivo"
+    )
     ruta_destino_texto = tk.Entry(newWindow)
     copiar_archivo_boton = tk.Button(
         newWindow,
@@ -113,7 +124,11 @@ def copiarArchivo():
         ),
     )
     boton_cerrar_ventana = tk.Button(
-        newWindow, text="Salir", command=lambda: newWindow.destroy()
+        newWindow,
+        text="Salir",
+        command=lambda: os.system(
+            "cp {0} {1}".format(ruta_origen_texto.get(), ruta_destino_texto.get())
+        ),
     )
 
     texto_ruta_origen.pack()
@@ -213,6 +228,6 @@ class Gui:
         )
 
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     Gui(root)
     root.mainloop()
