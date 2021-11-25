@@ -1,6 +1,5 @@
 #! /usr/bin/env python3
 
-import shutil
 import os
 from tkinter import ttk
 import tkinter as tk
@@ -86,7 +85,7 @@ def mostrarArchivos():
     boton_grande = tk.Button(
         newWindow,
         text="Listar archivos comenzado por el más joven",
-        command=lambda: os.system("ls {0} -ltrg".format(texto_origen_directorio.get())),
+        command=lambda: os.system("ls {0} -htg".format(texto_origen_directorio.get())),
     )
 
     boton_cerrar_ventana = tk.Button(
