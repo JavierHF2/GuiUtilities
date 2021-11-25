@@ -17,16 +17,16 @@ def cambiarpropietarioArchivo():
     ruta_propietario_archivo = tk.Entry(newWindow)
     texto_ruta_origen = tk.Label(newWindow, text="¿Cual es la ruta del archivo?")
     ruta_origen_archivo = tk.Entry(newWindow)
-    texto_grupo_archivo = tk.Label(newWindow, text="¿Cual seria el nuevo grupo?")
-    ruta_grupo_archivo = tk.Entry(newWindow)
 
-    cambiar_archivo_grupo_boton = tk.Button(
-        newWindow,
-        text="Cambiar grupo",
-        command=lambda: os.chown(
-            int(ruta_origen_archivo.get()),
-            ruta_propietario_archivo.get(),
-            int(ruta_grupo_archivo.get()),
+    cambiar_archivo_grupo_boton = (
+        tk.Button(
+            newWindow,
+            text="Cambiar grupo",
+            command=lambda: os.system(
+                "chown {0} {1}".format(
+                    ruta_propietario_archivo.get(), ruta_origen_archivo.get()
+                )
+            ),
         ),
     )
 
@@ -38,8 +38,6 @@ def cambiarpropietarioArchivo():
     ruta_propietario_archivo.pack()
     texto_ruta_origen.pack()
     ruta_origen_archivo.pack()
-    texto_grupo_archivo.pack()
-    ruta_grupo_archivo.pack()
     cambiar_archivo_grupo_boton.pack()
     boton_cerrar_ventana.pack()
 
@@ -60,7 +58,7 @@ def mostrarArchivos():
     boton_grande = tk.Button(
         newWindow,
         text="Buscar el mas grande",
-        command=lambda: os.system("ls {1} -ogh".format(texto_origen_directorio.get())),
+        command=lambda: os.system("ls {0} -ogh".format(texto_origen_directorio.get())),
     )
 
     boton_cerrar_ventana = tk.Button(
@@ -86,7 +84,7 @@ def editarArchivo():
         text="Editar",
         command=lambda: os.system(
             'echo "{0}" >> {1} '.format(
-                texto_apender_texto_origen.get(), ruta_origen_texto.get()
+                apender_texto_origen.get(), ruta_origen_texto.get()
             )
         ),
     )
